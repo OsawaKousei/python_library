@@ -1,4 +1,4 @@
-import fraction_logic as fl
+import math.fraction as fl
 
 
 class quantic_equation:
