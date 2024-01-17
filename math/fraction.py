@@ -1,4 +1,5 @@
 import random
+from integeral import integeral as intg
 
 
 class fraction:  # 分数クラス
@@ -19,6 +20,9 @@ class fraction:  # 分数クラス
     def get_factor(self):
         return self.numerator, self.denominator
 
+    def get_string(self):
+        return self.numerator.__str__() + "/" + self.denominator.__str__()
+
     def show(self):
         print(self.numerator, "/", self.denominator)
 
@@ -33,19 +37,9 @@ class fraction:  # 分数クラス
         return fraction(f.denominator, f.numerator)
 
     @staticmethod
-    def gcd(a, b):
-        while b:  # while文では0以外の値はTrueとして扱われる
-            a, b = b, a % b
-        return a
-
-    @staticmethod
-    def lcm(a, b):
-        return a * b // fraction.gcd(a, b)  # //は整数除算
-
-    @staticmethod
     def reduce(f):
         fraction.check(f)
-        gcd = fraction.gcd(f.numerator, f.denominator)
+        gcd = intg.gcd(f.numerator, f.denominator)
         f.numerator //= gcd
         f.denominator //= gcd
         return f
