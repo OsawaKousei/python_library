@@ -155,4 +155,4 @@ class quantic_equation_test:
 
 
 # quantic_equation_test.low_degree_test()
-quantic_equation_test.quantic_equation_test()
+# quantic_equation_test.quantic_equation_test()
