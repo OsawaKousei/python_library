@@ -49,5 +49,5 @@ class simple_exponents_test:
         e.show()
 
 
-simple_exponents_test.random_exponents()
-simple_exponents_test.arbitrary_exponents()
+# simple_exponents_test.random_exponents()
+# simple_exponents_test.arbitrary_exponents()

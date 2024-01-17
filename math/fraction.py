@@ -21,10 +21,13 @@ class fraction:  # 分数クラス
         return self.numerator, self.denominator
 
     def get_string(self):
-        return self.numerator.__str__() + "/" + self.denominator.__str__()
+        if self.denominator == 1:
+            return self.numerator.__str__()
+        else:
+            return self.numerator.__str__() + "/" + self.denominator.__str__()
 
     def show(self):
-        print(self.numerator, "/", self.denominator)
+        print(self.get_string())
 
     @staticmethod
     def check(f):
@@ -48,7 +51,7 @@ class fraction:  # 分数クラス
     def add(f1, f2):
         fraction.check(f1)
         fraction.check(f2)
-        lcm = fraction.lcm(f1.denominator, f2.denominator)
+        lcm = intg.lcm(f1.denominator, f2.denominator)
         return fraction(
             f1.numerator * lcm // f1.denominator + f2.numerator * lcm // f2.denominator,
             lcm,
@@ -58,7 +61,7 @@ class fraction:  # 分数クラス
     def sub(f1, f2):
         fraction.check(f1)
         fraction.check(f2)
-        lcm = fraction.lcm(f1.denominator, f2.denominator)
+        lcm = intg.lcm(f1.denominator, f2.denominator)
         return fraction(
             f1.numerator * lcm // f1.denominator - f2.numerator * lcm // f2.denominator,
             lcm,
@@ -75,6 +78,12 @@ class fraction:  # 分数クラス
         fraction.check(f1)
         fraction.check(f2)
         return fraction.mul(f1, fraction.reciprocal(f2))
+
+    @staticmethod
+    def random_fraction():
+        numerator = random.randint(-100, 100)
+        denominator = random.randint(-100, 100)
+        return fraction(numerator, denominator)
 
 
 class fraction_test:  # 分数テストクラス
