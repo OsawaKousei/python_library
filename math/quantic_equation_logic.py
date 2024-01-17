@@ -69,8 +69,6 @@ class quantic_equation:  # 2次方程式クラス
             fl.mul(equation.b, equation.b),
             fl.mul(fl.mul(equation.a, equation.c), fl(4, 1)),
         )
-        print("expression is ")
-        expression.show()
         expressions = ex(1, expression, fl(1, 2))
         equation.solution1 = ie([fraction, expressions])
         equation.solution2 = ie(
