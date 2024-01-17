@@ -1,7 +1,8 @@
 from fraction import fraction as fl
+from simple_exponents import simple_exponents as ex
 
 
-class quantic_equation:
+class quantic_equation:  # 2次方程式クラス
     def __init__(self, a, b, c, d):
         fl.check(a)
         self.a = a
@@ -59,13 +60,17 @@ class quantic_equation:
         print("solution is " + fl.get_string(equation.solution1))
 
     @staticmethod
+    def solve_quadratic_equation(equation):
+        pass
+
+    @staticmethod
     def soulve_equation(equation):
         if equation.degree == 0:
             quantic_equation.solve_zero_degree(equation)
         elif equation.degree == 1:
             quantic_equation.solve_liner_equation(equation)
         elif equation.degree == 2:
-            pass
+            quantic_equation.solve_quadratic_equation(equation)
         else:
             raise ValueError("degree must be 0, 1 or 2")
 

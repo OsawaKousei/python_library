@@ -2,8 +2,9 @@ from fraction import fraction as fl
 import random
 
 
-class simple_exponents:
+class simple_exponents:  # 指数クラス
     def __init__(self, base, exponent):
+        self.type = "exponents"
         fl.check(base)
         self.base = base
         fl.check(exponent)

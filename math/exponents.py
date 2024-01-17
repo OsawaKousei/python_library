@@ -3,7 +3,7 @@ from fraction import fraction as fl
 from integeral import integeral as intg
 
 
-class exponents:
+class exponents:  # 指数クラス
     def __init__(self, coeff, base, exponent):
         self.coeff = coeff
         self.base = fl.fraction(base, 1)

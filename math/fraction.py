@@ -4,6 +4,7 @@ from integeral import integeral as intg
 
 class fraction:  # 分数クラス
     def __init__(self, numerator, denominator):
+        self.type = "fraction"
         self.numerator = numerator
         if denominator == 0:
             raise ValueError("denominator must not be 0")
