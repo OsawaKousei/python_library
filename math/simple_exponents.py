@@ -3,8 +3,10 @@ import random
 
 
 class simple_exponents:  # 指数クラス
-    def __init__(self, base, exponent):
+    def __init__(self, coeff, base, exponent):
         self.type = "exponents"
+        fl.check(coeff)
+        self.coeff = coeff
         fl.check(base)
         self.base = base
         fl.check(exponent)
@@ -17,7 +19,14 @@ class simple_exponents:  # 指数クラス
         return self.base, self.exponent
 
     def get_string(self):
-        return "(" + fl.get_string(self.base) + "^" + fl.get_string(self.exponent) + ")"
+        return (
+            fl.get_string(self.coeff)
+            + "("
+            + fl.get_string(self.base)
+            + "^"
+            + fl.get_string(self.exponent)
+            + ")"
+        )
 
     def show(self):
         print(simple_exponents.get_string(self))
@@ -35,6 +44,10 @@ class simple_exponents_test:
 
     @staticmethod
     def arbitrary_exponents():
+        print("input coefficient numerator")
+        coefficient_numerator = int(input())
+        print("input coefficient denominator")
+        coefficient_denominator = int(input())
         print("input base numerator")
         base_numerator = int(input())
         print("input base denominator")
@@ -44,6 +57,7 @@ class simple_exponents_test:
         print("input exponent denominator")
         exponent_denominator = int(input())
         e = simple_exponents(
+            fl(coefficient_numerator, coefficient_denominator),
             fl(base_numerator, base_denominator),
             fl(exponent_numerator, exponent_denominator),
         )

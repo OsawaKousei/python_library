@@ -1,5 +1,7 @@
+from basic import basic
 from fraction import fraction as fl
 from simple_exponents import simple_exponents as ex
+from integeral_expression import integeral_expression as ie
 
 
 class quantic_equation:  # 2次方程式クラス
@@ -61,7 +63,22 @@ class quantic_equation:  # 2次方程式クラス
 
     @staticmethod
     def solve_quadratic_equation(equation):
-        pass
+        fraction = fl.div(fl.mul(equation.b, fl(-1, 1)), fl.mul(equation.a, fl(2, 1)))
+        coefficient = fl.reciprocal(fl.mul(equation.a, fl(2, 1)))
+        expression = fl.sub(
+            fl.mul(equation.b, equation.b),
+            fl.mul(fl.mul(equation.a, equation.c), fl(4, 1)),
+        )
+        print("expression is ")
+        expression.show()
+        expressions = ex(1, expression, fl(1, 2))
+        equation.solution1 = ie([fraction, expressions])
+        equation.solution2 = ie(
+            [fraction, ex(fl.mul(fl(-1, 1), coefficient), expression, fl(1, 2))]
+        )
+        print("solution is ")
+        equation.solution1.show()
+        equation.solution2.show()
 
     @staticmethod
     def soulve_equation(equation):
@@ -133,5 +150,11 @@ class quantic_equation_test:
         e.show()
         quantic_equation.soulve_equation(e)
 
+    @staticmethod
+    def quantic_equation_test():
+        e = quantic_equation_test.arbitary_test()
+        quantic_equation.soulve_equation(e)
 
-quantic_equation_test.low_degree_test()
+
+# quantic_equation_test.low_degree_test()
+quantic_equation_test.quantic_equation_test()

@@ -13,6 +13,9 @@ class integeral_expression:  # 整式クラス
         if not basic.check(self) == "integeral_expression":
             raise TypeError("this variable is not integeral_expression")
 
+    def show(self):
+        print(integeral_expression.get_string(self))
+
     @staticmethod
     def get_term_string(term):
         basic.check(term)
@@ -26,7 +29,11 @@ class integeral_expression:  # 整式クラス
         integeral_expression.check(expression)
         if expression.type == "integeral_expression":
             string = ""
+            i = 1
             for term in expression.expression:
+                if not i == 1:
+                    string += "+"
+                i += 1
                 string += integeral_expression.get_term_string(term)
             return string
         else:
@@ -39,7 +46,7 @@ class integeral_expression_test:
 
     @staticmethod
     def sample_test():
-        a = integeral_expression([fl(1, 1), ex(fl(1, 1), fl(1, 1))])
+        a = integeral_expression([fl(123, 7), ex(fl(77, 91), fl(3, 1), fl(1, 2))])
         print(integeral_expression.get_string(a))
 
 
