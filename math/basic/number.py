@@ -4,7 +4,13 @@ import abc
 class Number(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def __init__(self):
-        self.type = "number"
+        self._type = "number"
+        self.check()
+        self.standardize()
+
+    @property
+    def type(self):
+        return self._type
 
     @abc.abstractmethod
     def __str__(self):
@@ -18,37 +24,25 @@ class Number(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def get_type(self):
-        pass
-
-    @abc.abstractmethod
     def check(self):
         pass
 
     @abc.abstractmethod
-    def get_value(self):
+    def get_numerical_value(self):
         pass
 
     @abc.abstractmethod
-    def get_factor(self):
+    def __add__(self, other):
         pass
 
     @abc.abstractmethod
-    @staticmethod
-    def __add__(n1, n2):
+    def __sub__(self, other):
         pass
 
     @abc.abstractmethod
-    @staticmethod
-    def __sub__(n1, n2):
+    def __mul__(self, other):
         pass
 
     @abc.abstractmethod
-    @staticmethod
-    def __mul__(n1, n2):
-        pass
-
-    @abc.abstractmethod
-    @staticmethod
-    def __truediv__(n1, n2):
+    def __truediv__(self, other):
         pass
