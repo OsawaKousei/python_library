@@ -32,6 +32,22 @@ class Number(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
+    def __eq__(self, other):
+        pass
+
+    @abc.abstractmethod
+    def __ne__(self, other):
+        pass
+
+    @abc.abstractmethod
+    def __lt__(self, other):
+        pass
+
+    @abc.abstractmethod
+    def __gt__(self, other):
+        pass
+
+    @abc.abstractmethod
     def __add__(self, other):
         pass
 
