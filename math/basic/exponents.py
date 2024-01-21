@@ -43,11 +43,19 @@ class Exponents(Number):
             else:
                 raise TypeError("This variable cannot be interpreted as an exponents.")
         if type(self.base) != Frac:
-            raise ValueError("This base has an illegal value that is not an integer")
+            if type(self.base) == Intg:
+                self.base = Frac(self.base, 1)
+            else:
+                raise ValueError(
+                    "This base has an illegal value that is not an integer"
+                )
         if type(self.exponent) != Frac:
-            raise ValueError(
-                "This exponent has an illegal value that is not an integer"
-            )
+            if type(self.exponent) == Intg:
+                self.exponent = Frac(self.exponent, 1)
+            else:
+                raise ValueError(
+                    "This exponent has an illegal value that is not an integer"
+                )
 
         return self.standardize()
 

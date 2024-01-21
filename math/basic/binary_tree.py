@@ -4,25 +4,31 @@ class Binary_tree:
         self.res = []
         self.left = None
         self.right = None
-        self.top = self
+        self.top = None
+
+    def set_top(self):
+        if self.top is None:
+            return self
+        else:
+            return self.top
 
     def insert_left(self, new_node):
         if self.left is None:
             self.left = Binary_tree(new_node)
-            self.left.top = self.top
+            self.left.top = self.set_top()
         else:
             t = Binary_tree(new_node)
-            t.top = self.top
+            t.top = self.set_top()
             t.left = self.left
             self.left = t
 
     def insert_right(self, new_node):
         if self.right is None:
             self.right = Binary_tree(new_node)
-            self.right.top = self.top
+            self.right.top = self.set_top()
         else:
             t = Binary_tree(new_node)
-            t.top = self.top
+            t.top = self.set_top()
             t.right = self.right
             self.right = t
 
@@ -46,14 +52,19 @@ class Binary_tree:
             self.right.preorder()
 
     def inorder(self):
+        self.res = []
         if self.left:
             self.left.inorder()
-        print(self.root)
-        self.top.res.append(self.root)
+
+        if self.top is None:
+            self.res.append(self.root)
+        else:
+            self.top.res.append(self.root)
+
         if self.right:
             self.right.inorder()
 
-        return self.top.res
+        return self.res
 
     def postorder(self):
         if self.left:
@@ -95,7 +106,7 @@ def main():
     t.t.show(t.t.inorder())
 
 
-main()
+# main()
 
 """memo
 ＜クラスメソッドにおいて＞
@@ -113,5 +124,7 @@ def show(self, input):
 @staticmethod
 def show(input):
     print(input)
+
+self.top = self ←これは問題を起こす？
 
 """
