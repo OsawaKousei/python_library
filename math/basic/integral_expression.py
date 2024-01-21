@@ -59,4 +59,4 @@ class IntegralExpression_test:
         print(t)
 
 
-IntegralExpression_test().test_expression()
+# sIntegralExpression_test().test_expression()
