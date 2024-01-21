@@ -1,6 +1,8 @@
 from fraction import Fraction as Frac
 from exponents import Exponents as Exps
 from integral_expression import IntegralExpression as IE
+from integer import Integer as Intg
+from exppression import Operator as Op
 
 
 class quantic_equation:  # 2次方程式クラス
@@ -62,22 +64,33 @@ class quantic_equation:  # 2次方程式クラス
 
     @staticmethod
     def solve_quadratic_equation(equation):
-        fraction = Frac.div(
-            Frac.mul(equation.b, Frac(-1, 1)), Frac.mul(equation.a, Frac(2, 1))
+        fraction = equation.b * Frac(-1, 1) / equation.a * Frac(2, 1)
+
+        coefficient = Frac.reciprocal(equation.a * Frac(2, 1))
+        expression = (equation.b * equation.b) - (
+            (equation.a * equation.c) * Frac(4, 1)
         )
-        coefficient = Frac.reciprocal(Frac.mul(equation.a, Frac(2, 1)))
-        expression = Frac.sub(
-            Frac.mul(equation.b, equation.b),
-            Frac.mul(Frac.mul(equation.a, equation.c), Frac(4, 1)),
-        )
+
         expressions = Exps(expression, Frac(1, 2))
-        equation.solution1 = IE([fraction, expressions])
-        equation.solution2 = IE(
-            [
-                fraction,
-                Exps(Frac.mul(Frac(-1, 1), coefficient), expression, Frac(1, 2)),
-            ]
-        )
+
+        solution = IE()
+        solution.cont.set_root(Op("+"))
+        solution.cont.insert_left(fraction)
+        solution.cont.insert_right(Op("×"))
+        solution.cont.get_right().insert_left(coefficient)
+        solution.cont.get_right().insert_right(expressions)
+
+        equation.solution1 = solution
+
+        solution = IE()
+        solution.cont.set_root(Op("-"))
+        solution.cont.insert_left(fraction)
+        solution.cont.insert_right(Op("×"))
+        solution.cont.get_right().insert_left(coefficient)
+        solution.cont.get_right().insert_right(expressions)
+
+        equation.solution2 = solution
+
         print("solution is ")
         equation.solution1.show()
         equation.solution2.show()
@@ -158,5 +171,5 @@ class quantic_equation_test:
         quantic_equation.soulve_equation(e)
 
 
-quantic_equation_test.low_degree_test()
+# quantic_equation_test.low_degree_test()
 # quantic_equation_test.quantic_equation_test()
