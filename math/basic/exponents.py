@@ -11,7 +11,7 @@ class Exponents(Number):
         self._type = "exponents"
 
     def __str__(self):
-        return self.base.__str__() + "^" + self.exponent.__str__()
+        return "(" + self.base.__str__() + "^" + self.exponent.__str__() + ")"
 
     def standardize(self):
         return self
@@ -108,4 +108,4 @@ class Exponents_test:
         print(exponents.exponent)
 
 
-Exponents_test().instantiate_exponents()
+# Exponents_test().instantiate_exponents()

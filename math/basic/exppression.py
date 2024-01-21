@@ -1,10 +1,12 @@
 import abc
+from binary_tree import Binary_tree as Bt
 
 
 class Expression(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def __init__(self):
         self._type = "expression"
+        self.cont = Bt(0)
         self.check()
         self.standardize()
 
@@ -24,15 +26,9 @@ class Expression(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def check_term(self):
+    def term_check(self):
         pass
 
     @abc.abstractmethod
-    def check_vaild(self):
-        pass
-
     def check(self):
-        self.check_term()
-        self.check_vaild()
-        self.standardize()
         pass
